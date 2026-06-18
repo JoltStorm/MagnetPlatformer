@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://c827fflv3v6vx"]
+
+[ext_resource type="PackedScene" uid="uid://cmk3xft4ppjs2" path="res://scenes/player.tscn" id="1_0wfyh"]
+[ext_resource type="PackedScene" uid="uid://dmx1u6qgh2mb2" path="res://scenes/floor.tscn" id="1_o5qli"]
+
+[node name="Main" type="Node" unique_id=343483685]
+
+[node name="Player" parent="." unique_id=1803173208 instance=ExtResource("1_0wfyh")]
+position = Vector2(942, 493)
+JumpVelocity = -700.0
+
+[node name="Floors" type="Node" parent="." unique_id=1718531744]
+
+[node name="floor" parent="Floors" unique_id=121877359 instance=ExtResource("1_o5qli")]
+position = Vector2(929.99994, 819.99994)
+scale = Vector2(30, 5)
+
+[node name="floor2" parent="Floors" unique_id=392516533 instance=ExtResource("1_o5qli")]
+position = Vector2(1253, 562)
+scale = Vector2(3.3199997, 1.8800013)
