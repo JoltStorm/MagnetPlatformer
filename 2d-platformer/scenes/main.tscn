@@ -2,12 +2,9 @@
 
 [ext_resource type="PackedScene" uid="uid://cmk3xft4ppjs2" path="res://scenes/player.tscn" id="1_0wfyh"]
 [ext_resource type="PackedScene" uid="uid://dmx1u6qgh2mb2" path="res://scenes/floor.tscn" id="1_o5qli"]
+[ext_resource type="PackedScene" uid="uid://bofn5dqxwal8p" path="res://scenes/magnetSpawner.tscn" id="3_sugp2"]
 
 [node name="Main" type="Node" unique_id=343483685]
-
-[node name="Player" parent="." unique_id=1803173208 instance=ExtResource("1_0wfyh")]
-position = Vector2(942, 493)
-JumpVelocity = -700.0
 
 [node name="Floors" type="Node" parent="." unique_id=1718531744]
 
@@ -18,3 +15,9 @@ scale = Vector2(30, 5)
 [node name="floor2" parent="Floors" unique_id=392516533 instance=ExtResource("1_o5qli")]
 position = Vector2(1253, 562)
 scale = Vector2(3.3199997, 1.8800013)
+
+[node name="Player" parent="." unique_id=1803173208 instance=ExtResource("1_0wfyh")]
+position = Vector2(942, 493)
+JumpVelocity = -700.0
+
+[node name="MagnetSpawner" parent="." unique_id=1711136024 instance=ExtResource("3_sugp2")]

@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://eo5b4vugydj8"]
+
+[ext_resource type="Script" uid="uid://bf2x001l5gbr7" path="res://scenes/Magnet.cs" id="1_oylys"]
+[ext_resource type="Texture2D" uid="uid://c7b1c27shjh74" path="res://icon.svg" id="1_yp8jf"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_oylys"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7flrh"]
+radius = 98.478424
+
+[node name="Magnet" type="RigidBody2D" unique_id=830019600]
+collision_layer = 2
+collision_mask = 2
+gravity_scale = 0.0
+lock_rotation = true
+script = ExtResource("1_oylys")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=222347271]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_yp8jf")
+
+[node name="MagnetCollider" type="CollisionShape2D" parent="." unique_id=1537157388]
+shape = SubResource("CircleShape2D_oylys")
+
+[node name="MagnetArea" type="Area2D" parent="." unique_id=944397001]
+collision_layer = 0
+collision_mask = 0
+
+[node name="MagnetRadius" type="CollisionShape2D" parent="MagnetArea" unique_id=118271596]
+shape = SubResource("CircleShape2D_7flrh")
+
+[node name="VisibleNotifier" type="VisibleOnScreenNotifier2D" parent="." unique_id=1396200616]
+
+[connection signal="body_entered" from="." to="." method="OnBodyEntered"]
+[connection signal="screen_exited" from="VisibleNotifier" to="." method="OnScreenNotifierScreenExited"]
