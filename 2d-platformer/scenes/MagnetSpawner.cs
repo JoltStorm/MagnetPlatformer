@@ -6,7 +6,7 @@ public partial class MagnetSpawner : Node2D
 
 	private PackedScene magnet = ResourceLoader.Load<PackedScene>("res://scenes/magnet.tscn");
 
-	[Export] float Speed { get; set; } = 500f;
+	[Export] float Speed { get; set; } = 800f;
 
 	public void ShootMagnet(RayCast2D magnetRay, Vector2 playerPos)
 	{
