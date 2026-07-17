@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://eo5b4vugydj8"]
+
+[ext_resource type="Script" uid="uid://3hjeecs56bw0" path="res://scenes/Magnet.cs" id="1_oylys"]
+[ext_resource type="Texture2D" uid="uid://b4lt57mi08a22" path="res://Sprites/sawblade.png" id="1_yp8jf"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_8w0qf"]
+radius = 10.198039
+
+[node name="Magnet" type="RigidBody2D" unique_id=1015234323]
+gravity_scale = 0.0
+
+[node name="MagnetCollision" type="CollisionShape2D" parent="." unique_id=2023584371]
+shape = SubResource("CircleShape2D_8w0qf")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1395040372]
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("1_yp8jf")
+
+[node name="MagnetField" type="Area2D" parent="." unique_id=1037654234]
+script = ExtResource("1_oylys")
+radius = 200.0

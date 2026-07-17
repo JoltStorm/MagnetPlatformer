@@ -1,13 +1,14 @@
 [gd_scene format=3 uid="uid://cmk3xft4ppjs2"]
 
-[ext_resource type="Texture2D" uid="uid://c7b1c27shjh74" path="res://icon.svg" id="1_3vyb7"]
+[ext_resource type="Texture2D" uid="uid://c7b1c27shjh74" path="res://Sprites/icon.svg" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://dg5td4yumi38y" path="res://scenes/Player.cs" id="1_g2els"]
 [ext_resource type="Script" uid="uid://c5jxw0ibgvkkk" path="res://scenes/MouseTracker.cs" id="3_qhqgy"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_e3xgl"]
 
-[node name="CharacterBody2D" type="CharacterBody2D" unique_id=263145033]
+[node name="Player" type="CharacterBody2D" unique_id=263145033]
 script = ExtResource("1_g2els")
+JumpVelocity = -600.0
 
 [node name="RayCast2D" type="RayCast2D" parent="." unique_id=248285619]
 
