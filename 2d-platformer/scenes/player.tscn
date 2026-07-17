@@ -10,11 +10,11 @@
 script = ExtResource("1_g2els")
 JumpVelocity = -600.0
 
-[node name="RayCast2D" type="RayCast2D" parent="." unique_id=248285619]
+[node name="MagnetRaycast" type="RayCast2D" parent="." unique_id=248285619]
 
-[node name="Line2D" type="Line2D" parent="RayCast2D" unique_id=570823261]
+[node name="RayLine" type="Line2D" parent="MagnetRaycast" unique_id=570823261]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=943341228]
+[node name="PlayerCollision" type="CollisionShape2D" parent="." unique_id=943341228]
 scale = Vector2(3, 3)
 shape = SubResource("CapsuleShape2D_e3xgl")
 
@@ -26,6 +26,6 @@ texture = ExtResource("1_3vyb7")
 position = Vector2(59, -6)
 script = ExtResource("3_qhqgy")
 
-[node name="Sprite2D" type="Sprite2D" parent="Cursor" unique_id=412167289]
+[node name="Crosshair" type="Sprite2D" parent="Cursor" unique_id=412167289]
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("1_3vyb7")

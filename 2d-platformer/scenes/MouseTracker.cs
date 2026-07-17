@@ -9,37 +9,49 @@ public partial class MouseTracker : Node2D
 	private Vector2 _lastClick;
 
 	private CharacterBody2D player;
-	private RayCast2D rayCast2D;
+	private RayCast2D magnetRay;
 	private Line2D line2D;
 
-    public override void _Ready()
-    {
-        Position = Vector2.Zero;
+	private MagnetSpawner MagnetSpawner;
+
+	public override void _Ready()
+	{
+		Input.MouseMode = Input.MouseModeEnum.ConfinedHidden;
+
+		Position = Vector2.Zero;
 		player = GetParent<CharacterBody2D>();
-		rayCast2D = player.GetNode<RayCast2D>("RayCast2D");
-		line2D = rayCast2D.GetNode<Line2D>("Line2D");
-    }
+		// MagnetSpawner is a sibling node; you have to get it from the scene root 
+		MagnetSpawner = GetNode<MagnetSpawner>("/root/Main/MagnetSpawner");
+		magnetRay = player.GetNode<RayCast2D>("MagnetRaycast");
+		line2D = player.GetNode<Line2D>("MagnetRaycast/RayLine");
 
-    public override void _Input(InputEvent @event)
-    {
-		if(@event is InputEventMouseButton eventMouseButton)
-			_lastClick = eventMouseButton.Position;
+		magnetRay.CollideWithAreas = true;
+		magnetRay.CollideWithBodies = false;
+	}
 
-		//track mouse position
+	public override void _Input(InputEvent @event)
+	{
+		//track mouse click position
+		if(@event.IsActionPressed("shoot"))
+		{
+			MagnetSpawner.ShootMagnet(magnetRay, player.Position);
+		}
+
+		//track mouse movement position
 		else if(@event is InputEventMouseMotion eventMouseMotion)
 			_mousePos = eventMouseMotion.Position;
-    }
+	}
 
-    public override void _Process(double delta)
-    {
+	public override void _Process(double delta)
+	{
 		//use global position to set cursor position 
-        GlobalPosition = _mousePos;
+		GlobalPosition = _mousePos;
 
-		rayCast2D.Position = Vector2.Zero; //raycast is a child of player, not cursor
-		rayCast2D.TargetPosition = Position; //set targetpos to cursor
+		magnetRay.Position = Vector2.Zero; //raycast is a child of player, not cursor
+		magnetRay.TargetPosition = Position; //set targetpos to cursor
 
-		line2D.Points = [rayCast2D.Position, Position];
+		line2D.Points = [magnetRay.Position, Position];
 		
-    }
+	}
 
 }

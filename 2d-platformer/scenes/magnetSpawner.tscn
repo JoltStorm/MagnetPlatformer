@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://bofn5dqxwal8p"]
+
+[ext_resource type="Script" uid="uid://dwmr1ffpowxd" path="res://scenes/MagnetSpawner.cs" id="1_676nv"]
+
+[node name="MagnetSpawner" type="Node2D" unique_id=1711136024]
+script = ExtResource("1_676nv")
