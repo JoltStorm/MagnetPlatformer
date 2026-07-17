@@ -2,7 +2,7 @@ using Godot;
 using System;
 using System.Linq;
 
-public partial class Magnet : Area2D
+public partial class Magnet : RigidBody2D
 {
 	[Export] public float radius = 600f;
 	[Export] public float maxForce = 300f;
@@ -18,20 +18,7 @@ public partial class Magnet : Area2D
 		AddChild(collider);
     }
 
-
-    public override void _PhysicsProcess(double delta)
-    {
-		if (isMagnetized)
-		{
-			foreach (CharacterBody2D body in GetOverlappingBodies().OfType<CharacterBody2D>())
-			{
-				GD.Print(body.Name);
-				PushBody(body, (float)delta);
-			}	
-		}
-    }
-
-	private void PushBody(CharacterBody2D body, float delta)
+	private void PushBody(CharacterBody2D body)
 	{
 		Player player = (Player)body;
 
@@ -57,4 +44,16 @@ public partial class Magnet : Area2D
 		SetDeferred("Freeze", true);
 		isMagnetized = true;
 	}
+
+	private void OnMagnetAreaEntered(Area2D source)
+	{
+		if (isMagnetized)
+		{
+			foreach (CharacterBody2D body in source.GetOverlappingBodies().OfType<CharacterBody2D>())
+			{
+				PushBody(body);
+			}	
+		}
+	}
+
 }
